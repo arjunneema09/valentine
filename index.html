@@ -11,7 +11,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
     }
 
     .card {
@@ -20,23 +20,17 @@
       border-radius: 20px;
       text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      position: relative;
       width: 400px;
     }
 
     h1 {
-      margin-bottom: 10px;
-    }
-
-    .message {
-      font-size: 18px;
-      color: #555;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
     .buttons {
       position: relative;
       height: 80px;
+      margin-bottom: 20px;
     }
 
     button {
@@ -61,61 +55,66 @@
       transform: translateX(100%);
     }
 
-    #fireworks {
-      display: none;
-      margin-top: 30px;
+    .message {
+      font-size: 18px;
+      color: #555;
     }
 
-    video {
+    #fireworks {
+      display: none;
+      margin-top: 20px;
+    }
+
+    #fireworks img {
       width: 300px;
       border-radius: 15px;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-  <div class="card" id="card">
+  <div class="card">
     <h1>Umika, will you be my Valentine? 💖</h1>
-    <p class="message">
-      I made this little website just to ask you because you mean a lot to me ❤️
-    </p>
 
     <div class="buttons">
       <button id="yes">Yes</button>
       <button id="no">No</button>
     </div>
 
+    <p class="message">
+      I promise unlimited chocolates, bad jokes, and lots of love ❤️
+    </p>
+
     <div id="fireworks">
       <h2>Yayyyy!!! 🎉💘</h2>
       <p>You just made me the happiest person alive 💕</p>
-      <video autoplay loop muted>
-        <source src="https://cdn.pixabay.com/video/2022/10/06/133361-757084691_large.mp4" type="video/mp4">
-      </video>
+      <img src="https://media.giphy.com/media/26tOZ42Mg6pbTUPHW/giphy.gif" alt="Fireworks">
     </div>
   </div>
-<script>
-  const noBtn = document.getElementById("no");
-  const yesBtn = document.getElementById("yes");
-  const fireworks = document.getElementById("fireworks");
 
-  function moveNoButton() {
-    const x = Math.random() * 300 - 150;
-    const y = Math.random() * 150 - 75;
-    noBtn.style.transform = `translate(${x}px, ${y}px)`;
-  }
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const fireworks = document.getElementById("fireworks");
 
-  // Move every 800ms automatically
-  setInterval(moveNoButton, 800);
+    function moveNoButton() {
+      const x = Math.random() * 300 - 150;
+      const y = Math.random() * 150 - 75;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    }
 
-  // Also move when hovered
-  noBtn.addEventListener("mouseover", moveNoButton);
+    // Start moving as soon as page loads
+    setInterval(moveNoButton, 800);
 
-  yesBtn.addEventListener("click", () => {
-    document.querySelector(".buttons").style.display = "none";
-    fireworks.style.display = "block";
-  });
-</script>
+    // Also move when hovered
+    noBtn.addEventListener("mouseover", moveNoButton);
 
+    yesBtn.addEventListener("click", () => {
+      document.querySelector(".buttons").style.display = "none";
+      fireworks.style.display = "block";
+    });
+  </script>
 
 </body>
 </html>
