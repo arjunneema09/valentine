@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Will you be my Valentine?</title>
+  <title>Umika, Will you be my Valentine?</title>
   <style>
     body {
       margin: 0;
@@ -11,7 +11,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
     }
 
     .card {
@@ -20,6 +20,18 @@
       border-radius: 20px;
       text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      position: relative;
+      width: 400px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .message {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 30px;
     }
 
     .buttons {
@@ -53,12 +65,20 @@
       display: none;
       margin-top: 30px;
     }
+
+    video {
+      width: 300px;
+      border-radius: 15px;
+    }
   </style>
 </head>
 <body>
 
-  <div class="card">
+  <div class="card" id="card">
     <h1>Umika, will you be my Valentine? 💖</h1>
+    <p class="message">
+      I made this little website just to ask you because you mean a lot to me ❤️
+    </p>
 
     <div class="buttons">
       <button id="yes">Yes</button>
@@ -67,26 +87,35 @@
 
     <div id="fireworks">
       <h2>Yayyyy!!! 🎉💘</h2>
-      <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" width="300">
+      <p>You just made me the happiest person alive 💕</p>
+      <video autoplay loop muted>
+        <source src="https://cdn.pixabay.com/video/2022/10/06/133361-757084691_large.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
+<script>
+  const noBtn = document.getElementById("no");
+  const yesBtn = document.getElementById("yes");
+  const fireworks = document.getElementById("fireworks");
 
-  <script>
-    const noBtn = document.getElementById("no");
-    const yesBtn = document.getElementById("yes");
-    const fireworks = document.getElementById("fireworks");
+  function moveNoButton() {
+    const x = Math.random() * 300 - 150;
+    const y = Math.random() * 150 - 75;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  }
 
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * 200 - 100;
-      const y = Math.random() * 100 - 50;
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    });
+  // Move every 800ms automatically
+  setInterval(moveNoButton, 800);
 
-    yesBtn.addEventListener("click", () => {
-      document.querySelector(".buttons").style.display = "none";
-      fireworks.style.display = "block";
-    });
-  </script>
+  // Also move when hovered
+  noBtn.addEventListener("mouseover", moveNoButton);
+
+  yesBtn.addEventListener("click", () => {
+    document.querySelector(".buttons").style.display = "none";
+    fireworks.style.display = "block";
+  });
+</script>
+
 
 </body>
 </html>
